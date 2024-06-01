@@ -1,0 +1,31 @@
+.title__name {
+    margin-bottom: 50px;
+    display: flex;
+}
+
+.paragpraph-text {
+    font-size: 25px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    margin: 35px 0 -15px 0;
+}
+
+.title__name-input {
+    font-size: 28px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    all: unset;
+}
+
+.create__todo {
+    margin-bottom: 30px;
+}
+
+.create__todo-text {
+    margin: 0;
+    font-size: 24px;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    line-height: 24px;
+    margin-bottom: 20px;
+}

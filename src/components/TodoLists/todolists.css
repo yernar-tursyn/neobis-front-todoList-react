@@ -1,0 +1,41 @@
+.todo__lists {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.create__todo-text {
+    margin: 0;
+    font-size: 24px;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.form_radio_lists {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.labels {
+    display: flex;
+    gap: 5px;
+}
+
+.input_modify {
+    all: unset;
+}
+
+.labels .radio-label {
+    cursor: pointer;
+}
+
+.form-radio-btn {
+    display: flex;
+    gap: 5px;
+}
