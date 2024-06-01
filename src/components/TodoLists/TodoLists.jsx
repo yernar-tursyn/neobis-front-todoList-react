@@ -23,7 +23,7 @@ export const TodoLists = ({ todos, handleDeleteTodo, handleEditTodo, handleSaveT
           <div className="labels">
             <input
               id={`todo-${index}`}
-              type="checkbox"  // Используем type="checkbox" для возможности повторного нажатия
+              type="checkbox"  
               className={getRadioClass(todo.category)}
               name={`radio-${index}`}
               checked={todo.checked}

@@ -6,7 +6,6 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
   const [todos, setTodos] = useState(() => {
-    // Получение данных из localStorage при загрузке
     const savedTodos = localStorage.getItem('todos');
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
@@ -14,7 +13,6 @@ function App() {
   const [category, setCategory] = useState('business');
 
   useEffect(() => {
-    // Сохранение данных в localStorage при изменении todos
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
