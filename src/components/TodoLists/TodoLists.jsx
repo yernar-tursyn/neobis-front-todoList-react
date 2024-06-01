@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
 import '../TodoLists/todolists.css';
 
-export const TodoLists = ({ todos, handleDeleteTodo, handleEditTodo, handleSaveTodo }) => {
+export const TodoLists = ({ todos, handleDeleteTodo, handleEditTodo, handleSaveTodo, handleRadioChange }) => {
   const [editText, setEditText] = useState('');
+
+  const getRadioClass = (category) => {
+    switch (category) {
+      case 'business':
+        return 'business-radio';
+      case 'personal':
+        return 'personal-radio';
+      default:
+        return '';
+    }
+  };
 
   return (
     <div className="todo__lists">
-      <p className="create__todo-text">СПИСОК ДЕЛ</p>
+      <p className="create__todo-text">TODO LIST</p>
       {todos.map((todo, index) => (
         <div key={index} className="form_radio_lists">
           <div className="labels">
             <input
               id={`todo-${index}`}
-              type="radio"
-              name="radio"
-              onClick={(e) => {
-                e.target.checked = !e.target.checked;
-                e.target.nextSibling.style.color = e.target.checked ? 'grey' : '';
-                e.target.nextSibling.style.textDecoration = e.target.checked ? 'line-through' : '';
-              }}
+              type="checkbox"  // Используем type="checkbox" для возможности повторного нажатия
+              className={getRadioClass(todo.category)}
+              name={`radio-${index}`}
+              checked={todo.checked}
+              onChange={() => handleRadioChange(index)}
             />
             {todo.isEditing ? (
               <input
@@ -29,7 +38,7 @@ export const TodoLists = ({ todos, handleDeleteTodo, handleEditTodo, handleSaveT
                 autoFocus
               />
             ) : (
-              <label htmlFor={`todo-${index}`} className="labels_line">
+              <label htmlFor={`todo-${index}`} className={`labels_line ${todo.checked ? 'checked-task' : ''}`}>
                 {todo.text}
               </label>
             )}
@@ -37,7 +46,7 @@ export const TodoLists = ({ todos, handleDeleteTodo, handleEditTodo, handleSaveT
           <div className="form-radio-btn">
             {todo.isEditing ? (
               <button className="save-btn" onClick={() => handleSaveTodo(index, editText)}>
-                Сохранить
+                Save
               </button>
             ) : (
               <button
@@ -47,11 +56,11 @@ export const TodoLists = ({ todos, handleDeleteTodo, handleEditTodo, handleSaveT
                   setEditText(todo.text);
                 }}
               >
-                Редактировать
+                Edit
               </button>
             )}
             <button className="delete-btn" onClick={() => handleDeleteTodo(index)}>
-              Удалить
+              Delete
             </button>
           </div>
         </div>

@@ -1,12 +1,18 @@
 import React from 'react';
 import '../TitleInput/title-input.css';
 
-export const TitleInput = ({ currentTodo, setCurrentTodo }) => {
+export const TitleInput = ({ currentTodo, setCurrentTodo, handleAddTodo }) => {
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleAddTodo();
+    }
+  };
+
   return (
     <div className='title'>
       <div className="title__name">
         <p className="paragpraph-text">
-        What's up, <input className="title__name-input" type="text" />
+            What's up, <input className="title__name-input" type="text" />
         </p>
       </div>
       <div className="create__todo">
@@ -18,6 +24,7 @@ export const TitleInput = ({ currentTodo, setCurrentTodo }) => {
           placeholder="e.g. get a milk"
           value={currentTodo}
           onChange={(e) => setCurrentTodo(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
       </div>
     </div>
